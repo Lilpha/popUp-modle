@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고정된 DIV 예제</title>
+    <style>
+        @keyframes leftToCenter {
+            0% {
+                left: 0%;
+                opacity: 0%;
+            }
+
+            100% {
+                left: 50%;
+                opacity: 100%;
+            }
+        }
+        
+        .fromLeft {
+            animation-name: leftToCenter;
+            animation-duration: 2s;
+        }
+
+        @keyframes rightToCenter {
+            0% {
+                left: 100%;
+                opacity: 0%;
+            }
+            100% {
+                left: 50%; 
+                opacity: 100%;
+            }
+        }
+        
+        .fromRight {
+            animation-name: rightToCenter;
+            animation-duration: 2s;
+        }
+
+        @keyframes topToCenter {
+            0% {
+                top: 0%;
+                opacity: 0%;
+            }
+
+            100% {
+                top: 50%;
+                opacity: 100%;
+            }
+        } 
+        .fromTop {
+            animation-name: topToCenter;
+            animation-duration: 2s;
+        }
+
+        @keyframes bottomToCenter {
+            0% {
+                top: 100%;
+                opacity : 0%;
+            }
+            100% {
+                top: 50%;
+                opacity: 100%;
+            }
+        } 
+        .fromBottom {
+            animation-name: bottomToCenter;
+            animation-duration: 2s;
+        }
+
+ 
+
+        body {
+            margin: 0;
+
+        }
+
+        .box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* 도형을 위한 코드 */
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 2px solid #ccc;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            /* 도형을 위한 코드 */
+        }
+    </style>
+
+</head>
+
+<body>
+    <button id="clickBtn0">left</button>
+    <button id="clickBtn1">right</button>
+    <button id="clickBtn2">top</button>
+    <button id="clickBtn3">bottom</button>
+    <div class="box" id="box">
+        <h2>고정된 DIV</h2>
+        <p>여기에 내용을 추가할 수 있습니다.</p>
+    </div>
+    <script>
+        var left = document.getElementById("clickBtn0");
+        var right = document.getElementById("clickBtn1");
+        var top = document.getElementById("clickBtn2");
+        var bottom = document.getElementById("clickBtn3");
+        var box = document.getElementById("box")
+
+        var timer = 2000
+
+        function deleteClass(classname) {
+            box.classList.remove(`${classname}`)
+        }
+
+        clickBtn0.addEventListener("click", function (e) {
+            box.classList.add("fromLeft");
+            setTimeout(() => { deleteClass("fromLeft") }, timer);
+        }, false);
+
+        clickBtn1.addEventListener("click", function (e) {
+            box.classList.add("fromRight");
+            setTimeout(() => { deleteClass("fromRight") }, timer);
+        }, false);
+
+        clickBtn2.addEventListener("click", function (e) {
+            box.classList.add("fromTop");
+            setTimeout(() => { deleteClass("fromTop") }, timer);
+        }, false);
+
+        clickBtn3.addEventListener("click", function (e) {
+            box.classList.add("fromBottom");
+            setTimeout(() => { deleteClass("fromBottom") }, timer);
+        }, false);
+
+
+    </script>
+</body>
+
+</html>
